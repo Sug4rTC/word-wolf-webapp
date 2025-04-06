@@ -8,7 +8,7 @@ RUN go mod download
 COPY ./word-wolf-backend ./
 
 RUN mkdir -p /app/bin
-RUN go build -o /app/bin/main .
+RUN go build -o /app/bin/main ./cmd/server
 
 EXPOSE 8080
 

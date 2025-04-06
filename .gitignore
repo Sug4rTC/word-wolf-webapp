@@ -1,0 +1,20 @@
+# Node.js / React (frontend)
+word-wolf-frontend/node_modules/
+word-wolf-frontend/dist/
+word-wolf-frontend/build/
+# 環境変数ファイル（必要なら）
+word-wolf-frontend/.env*
+
+# Go (backend)
+# ビルド成果物（例: /app/bin に出力したバイナリ）や自動生成ファイル
+word-wolf-backend/bin/
+word-wolf-backend/vendor/
+# もし生成される場合はログファイルなど
+*.log
+
+# OS固有のファイル
+.DS_Store
+
+# エディタやIDEの設定ファイル
+.vscode/
+.idea/

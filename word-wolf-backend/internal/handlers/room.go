@@ -45,8 +45,8 @@ func CreateRoom(c echo.Context) error {
 	}
 
 	RoomsMu.Lock()
+	defer RoomsMu.Unlock()
 	Rooms[roomID] = room
-	RoomsMu.Unlock()
 
 	return c.JSON(http.StatusCreated, room)
 }

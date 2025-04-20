@@ -15,4 +15,5 @@ func RegisterRoutes(e *echo.Echo) {
 	e.GET("/ws", handlers.WebSocketHandler)
 
 	e.POST("/rooms", handlers.CreateRoom)
+	e.POST("/rooms/:roomID/participants", handlers.CreateParticipant)
 }

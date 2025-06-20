@@ -50,3 +50,19 @@ func CreateRoom(c echo.Context) error {
 
 	return c.JSON(http.StatusCreated, room)
 }
+
+func GetRoom(c echo.Context) error {
+	roomID := c.Param("roomID")
+	if roomID == "" {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "roomID is required"})
+	}
+
+	RoomsMu.RLock()
+	room, ok := Rooms[roomID]
+	RoomsMu.RUnlock()
+	if !ok {
+		return c.JSON(http.StatusNotFound, map[string]string{"error": "room not found"})
+	}
+
+	return c.JSON(http.StatusOK, room)
+}

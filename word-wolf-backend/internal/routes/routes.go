@@ -16,4 +16,6 @@ func RegisterRoutes(e *echo.Echo) {
 
 	e.POST("/rooms", handlers.CreateRoom)
 	e.POST("/rooms/:roomID/participants", handlers.CreateParticipant)
+	e.GET("/rooms/:roomID/participants", handlers.GetParticipants)
+	e.GET("/rooms/:roomID", handlers.GetRoom)
 }

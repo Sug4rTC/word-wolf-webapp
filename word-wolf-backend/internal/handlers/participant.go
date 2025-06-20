@@ -70,3 +70,19 @@ func CreateParticipant(c echo.Context) error {
 	return c.JSON(http.StatusCreated, newParticipant)
 
 }
+
+func GetParticipants(c echo.Context) error {
+	roomID := c.Param("roomID")
+	if roomID == "" {
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": "roomID is required"})
+	}
+
+	RoomParticipantsMu.RLock()
+	participants, ok := RoomParticipants[roomID]
+	RoomParticipantsMu.RUnlock()
+	if !ok {
+		return c.JSON(http.StatusNotFound, map[string]string{"error": "room not found"})
+	}
+
+	return c.JSON(http.StatusOK, participants)
+}

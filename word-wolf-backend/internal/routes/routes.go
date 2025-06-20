@@ -7,5 +7,15 @@ import (
 )
 
 func RegisterRoutes(e *echo.Echo) {
+
+	e.GET("/", func(c echo.Context) error {
+		return c.String(200, "EchoとWebSocketを使用したサーバー")
+	})
+
 	e.GET("/ws", handlers.WebSocketHandler)
+
+	e.POST("/rooms", handlers.CreateRoom)
+	e.POST("/rooms/:roomID/participants", handlers.CreateParticipant)
+	e.GET("/rooms/:roomID/participants", handlers.GetParticipants)
+	e.GET("/rooms/:roomID", handlers.GetRoom)
 }
